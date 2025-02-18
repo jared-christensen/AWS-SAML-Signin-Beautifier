@@ -24,11 +24,12 @@
       --color-light-red: #FAE8EF;
       --color-light-yellow: #FDFCE9;
       --color-light-blue: #E9F1FD;
+      --color-darker-gray: #B0B0B0;
 
-      --background-default: var(--color-light-yellow);
-      --background-prod: var(--color-light-red);
-      --background-dev: var(--color-light-gray);
-      --background-delivery: var(--color-light-blue);
+      --card-background-default: var(--color-light-yellow);
+      --card-background-prod: var(--color-darker-gray);
+      --card-background-dev: var(--color-light-gray);
+      --card-background-delivery: var(--color-light-blue);
 
       --border-default: var(--color-gray);
       --border-admin: var(--color-red);
@@ -52,7 +53,7 @@
     }
 
     fieldset > .saml-account {
-      background: var(--background-default);
+      background: var(--card-background-default);
       border-radius: 4px;
       display: flex;
       flex-direction: column;
@@ -63,15 +64,15 @@
     }
 
     .saml-account.prod-account {
-      background: var(--background-prod) !important;
+      background: var(--card-background-prod) !important;
     }
 
     .saml-account.dev-account {
-      background: var(--background-dev) !important;
+      background: var(--card-background-dev) !important;
     }
 
     .saml-account.delivery-account {
-      background: var(--background-delivery) !important;
+      background: var(--card-background-delivery) !important;
     }
 
     .saml-account .saml-account {
