@@ -6,8 +6,9 @@
 // @author       Jared Christensen
 // @match        https://signin.aws.amazon.com/saml
 // @grant        GM_addStyle
+// @updateURL    https://github.com/jared-christensen/AWS-SAML-Signin-Beautifier/raw/main/aws-saml-signin-beautifier.user.js
+// @downloadURL  https://github.com/jared-christensen/AWS-SAML-Signin-Beautifier/raw/main/aws-saml-signin-beautifier.user.js
 // ==/UserScript==
-
 (function () {
     "use strict";
 
