@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AWS-SAML-Signin-Beautifier
 // @namespace    https://github.com/jared-christensen/AWS-SAML-Signin-Beautifier
-// @version      1.0.0
+// @version      1.1.0
 // @description  Enhances the AWS SAML sign-in page with UI improvements, better readability, and quality-of-life tweaks.
 // @author       Jared Christensen
 // @match        https://signin.aws.amazon.com/saml
@@ -23,8 +23,7 @@
       --color-light-gray: #F4F4F5;
       --color-light-yellow: #FDFCE9;
       --color-light-blue: #E9F1FD;
-      --color-darker-gray: #B0B0B0;
-
+      --color-darker-gray: #C0C0C0;
       --card-background-default: var(--color-light-yellow);
       --card-background-prod: var(--color-darker-gray);
       --card-background-dev: var(--color-light-gray);
