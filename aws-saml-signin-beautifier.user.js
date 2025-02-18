@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AWS-SAML-Signin-Beautifier
 // @namespace    https://github.com/jared-christensen/AWS-SAML-Signin-Beautifier
-// @version      4.7
+// @version      1.0.0
 // @description  Enhances the AWS SAML sign-in page with UI improvements, better readability, and quality-of-life tweaks.
 // @author       Jared Christensen
 // @match        https://signin.aws.amazon.com/saml
@@ -21,7 +21,6 @@
       --color-green: #5DC56B;
       --color-blue: #3E6BE9;
       --color-light-gray: #F4F4F5;
-      --color-light-red: #FAE8EF;
       --color-light-yellow: #FDFCE9;
       --color-light-blue: #E9F1FD;
       --color-darker-gray: #B0B0B0;
@@ -107,67 +106,67 @@
       padding: 5px 8px;
       border-radius: 4px;
       background: var(--color-white);
-      border: 1px solid var(--border-default); // Added border
+      border: 1px solid var(--border-default);
       white-space: nowrap;
       color: var(--text-default) !important;
     }
 
     .clickable-radio label:hover {
       filter: brightness(85%);
-      color: var(--text-default) !important; // Ensure text color does not change
+      color: var(--text-default) !important;
     }
 
     .clickable-radio.admin label {
       background: var(--border-admin) !important;
-      border: 1px solid var(--border-admin) !important; // Match border to background
+      border: 1px solid var(--border-admin) !important;
       color: var(--text-light) !important;
     }
 
     .clickable-radio.admin label:hover {
       filter: brightness(75%);
-      color: var(--text-light) !important; // Ensure text color does not change
+      color: var(--text-light) !important;
     }
 
     .clickable-radio.poweruser label {
       background: var(--border-poweruser) !important;
-      border: 1px solid var(--border-poweruser) !important; // Match border to background
+      border: 1px solid var(--border-poweruser) !important;
       color: var(--text-light) !important;
     }
 
     .clickable-radio.poweruser label:hover {
       filter: brightness(75%);
-      color: var(--text-light) !important; // Ensure text color does not change
+      color: var(--text-light) !important;
     }
 
     .clickable-radio.deployeditor label {
       background: var(--border-deployeditor) !important;
-      border: 1px solid var(--border-deployeditor) !important; // Match border to background
-      color: var(--text-light) !important; // Ensure white text
+      border: 1px solid var(--border-deployeditor) !important;
+      color: var(--text-light) !important;
     }
 
     .clickable-radio.deployeditor label:hover {
       filter: brightness(75%);
-      color: var(--text-light) !important; // Ensure white text
+      color: var (--text-light) !important;
     }
 
     .clickable-radio.readonly label {
       background: var(--color-white) !important;
-      border: 1px solid var(--border-default) !important; // Added border
+      border: 1px solid var(--border-default) !important;
     }
 
     .clickable-radio.readonly label:hover {
       filter: brightness(85%);
-      color: var(--text-default) !important; // Ensure text color does not change
+      color: var(--text-default) !important;
     }
 
     .clickable-radio.delivery label {
       background: var(--border-delivery) !important;
-      border: 1px solid var(--border-delivery) !important; // Match border to background
+      border: 1px solid var(--border-delivery) !important;
     }
 
     .clickable-radio.delivery label:hover {
       filter: brightness(75%);
-      color: var(--text-default) !important; // Ensure text color does not change
+      color: var(--text-default) !important;
     }
 
     h1.background,
