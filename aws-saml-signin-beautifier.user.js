@@ -160,22 +160,19 @@ fieldset > .saml-account {
     });
   }
 
-  // adds classes to accounts and buttons based on account name or role
-  function addClasses() {
-    document.querySelectorAll(".saml-account").forEach((account) => {
-      // Highlight accounts based on name
-      const nameElement = account.querySelector(".saml-account-name");
-      if (nameElement) {
-        const text = nameElement.textContent.toLowerCase();
-        if (text.includes("prod")) {
-          account.classList.add("prod-account");
-        } else if (text.includes("dev")) {
-          account.classList.add("dev-account");
-        } else if (text.includes("delivery")) {
-          account.classList.add("delivery-account");
-        }
+  // Adds classes to accounts based on account name or role
+  function addClasses(account) {
+    const nameElement = account.querySelector(".saml-account-name");
+    if (nameElement) {
+      const text = nameElement.textContent.toLowerCase();
+      if (text.includes("prod")) {
+        account.classList.add("prod-account");
+      } else if (text.includes("dev")) {
+        account.classList.add("dev-account");
+      } else if (text.includes("delivery")) {
+        account.classList.add("delivery-account");
       }
-    });
+    }
   }
 
   // Adds class to clickable radio buttons
@@ -192,6 +189,7 @@ fieldset > .saml-account {
   // Processes each account element
   function processAccounts() {
     document.querySelectorAll(".saml-account").forEach((account) => {
+      addClasses(account);
       addClassToClickableRadios(account);
     });
   }
@@ -207,7 +205,6 @@ fieldset > .saml-account {
 
   function init() {
     cleanAccountLabels();
-    addClasses();
     autoSubmit();
     processAccounts();
   }
