@@ -175,14 +175,24 @@ fieldset > .saml-account {
           account.classList.add("delivery-account");
         }
       }
-      // Add class to clickable radio buttons
-      account.querySelectorAll(".clickable-radio label").forEach((label) => {
-        let labelText = label.textContent.trim();
-        labelText = labelText.replace(/^DHI-/i, "");
-        label.textContent = labelText;
-        const className = labelText.toLowerCase().replace(/\s+/g, "-");
-        label.closest(".clickable-radio").classList.add(className);
-      });
+    });
+  }
+
+  // Adds class to clickable radio buttons
+  function addClassToClickableRadios(account) {
+    account.querySelectorAll(".clickable-radio label").forEach((label) => {
+      let labelText = label.textContent.trim();
+      labelText = labelText.replace(/^DHI-/i, "");
+      label.textContent = labelText;
+      const className = labelText.toLowerCase().replace(/\s+/g, "-");
+      label.closest(".clickable-radio").classList.add(className);
+    });
+  }
+
+  // Processes each account element
+  function processAccounts() {
+    document.querySelectorAll(".saml-account").forEach((account) => {
+      addClassToClickableRadios(account);
     });
   }
 
@@ -199,6 +209,7 @@ fieldset > .saml-account {
     cleanAccountLabels();
     addClasses();
     autoSubmit();
+    processAccounts();
   }
 
   init();
