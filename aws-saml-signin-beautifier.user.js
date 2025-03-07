@@ -11,7 +11,9 @@
 // ==/UserScript==
 (function () {
   "use strict";
-  GM_addStyle(`/* Rests */
+  GM_addStyle(`
+
+/* Rests */
 .saml-role {
   display: inline-block;
   margin: 0;
@@ -48,27 +50,22 @@ fieldset > .saml-account {
   background-color: #fff;
   border-radius: 16px;
   background-color: #fff;
-  border: 1px solid rgb(198, 198, 205);
+  border: 1px solid #c6c6cd;
   border-radius: 16px;
   padding: 16px 20px;
   box-sizing: border-box;
 }
 
+/* Card - Warning */
 .saml-account.prod-account {
-  border-color: rgb(133, 89, 0);
-  background-color: rgb(255, 254, 240);
+  border-color: #855900;
+  background-color: #fffeF0;
 }
 
+/* Card - Info */
 .saml-account.delivery-account {
   border-color: #006ce0;
-  background-color: rgb(240, 251, 255);
-}
-
-.saml-account .saml-account {
-  margin: 0;
-  padding: 0;
-  display: flex !important;
-  gap: 8px
+  background-color: #f0fbff;
 }
 
 /* Card Title */
@@ -91,6 +88,15 @@ fieldset > .saml-account {
   line-height: 20px;
   letter-spacing: 0.005em;
 }
+
+/* Button Container */
+.saml-account .saml-account {
+  margin: 0;
+  padding: 0;
+  display: flex !important;
+  gap: 8px
+}
+
 
 /* Primary Button */
 .saml-role label {
@@ -141,8 +147,10 @@ fieldset > .saml-account {
     border-color: #002b66 !important;
     color: #002b66 !important;
   }
-}`);
+}
+`);
 
+  // Cleans up the account labels to make them easier to read
   function cleanAccountLabels() {
     document.querySelectorAll(".saml-account-name").forEach((account) => {
       account.innerHTML = account.textContent
@@ -152,8 +160,10 @@ fieldset > .saml-account {
     });
   }
 
-  function highlightEnvAccounts() {
+  // adds classes to accounts and buttons based on account name or role
+  function addClasses() {
     document.querySelectorAll(".saml-account").forEach((account) => {
+      // Highlight accounts based on name
       const nameElement = account.querySelector(".saml-account-name");
       if (nameElement) {
         const text = nameElement.textContent.toLowerCase();
@@ -165,52 +175,31 @@ fieldset > .saml-account {
           account.classList.add("delivery-account");
         }
       }
-
+      // Add class to clickable radio buttons
       account.querySelectorAll(".clickable-radio label").forEach((label) => {
         let labelText = label.textContent.trim();
         labelText = labelText.replace(/^DHI-/i, "");
-
         label.textContent = labelText;
-
-        if (labelText.toLowerCase().includes("admin")) {
-          label.closest(".clickable-radio").classList.add("admin");
-        } else if (labelText.toLowerCase().includes("poweruser")) {
-          label.closest(".clickable-radio").classList.add("poweruser");
-        } else if (labelText.toLowerCase().includes("deployeditor")) {
-          label.closest(".clickable-radio").classList.add("deployeditor");
-        } else if (labelText.toLowerCase().includes("readonly")) {
-          label.closest(".clickable-radio").classList.add("readonly");
-        } else if (labelText.toLowerCase().includes("delivery")) {
-          label.closest(".clickable-radio").classList.add("delivery");
-        }
+        const className = labelText.toLowerCase().replace(/\s+/g, "-");
+        label.closest(".clickable-radio").classList.add(className);
       });
     });
   }
 
   function autoSubmit() {
     const form = document.querySelector("#saml_form");
-    if (!form) return;
-
     document.querySelectorAll(".saml-role").forEach((role) => {
       role.addEventListener("click", () => {
-        const radio = role.querySelector('input[type="radio"]');
-        if (radio) {
-          radio.checked = true;
-          form.submit();
-        }
+        form.submit();
       });
     });
   }
 
   function init() {
     cleanAccountLabels();
-    highlightEnvAccounts();
+    addClasses();
     autoSubmit();
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
+  init();
 })();
