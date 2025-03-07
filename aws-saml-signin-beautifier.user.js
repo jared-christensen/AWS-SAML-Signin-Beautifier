@@ -10,247 +10,207 @@
 // @downloadURL  https://github.com/jared-christensen/AWS-SAML-Signin-Beautifier/raw/main/aws-saml-signin-beautifier.user.js
 // ==/UserScript==
 (function () {
-    "use strict";
+  "use strict";
+  GM_addStyle(`/* Rests */
+.saml-role {
+  display: inline-block;
+  margin: 0;
+}
+h1.background,
+#saml_form p,
+.saml-account > hr,
+.expandable-container > img,
+.saml-role input[type="radio"],
+#input_signin_button,
+#smallprint {
+  display: none;
+}
+#content {
+  border: none;
+}
 
-    GM_addStyle(`
-    :root {
-      --color-gray: #D4D4D8;
-      --color-white: #FFFFFF;
-      --color-black: #000000;
-      --color-red: #DE3D62;
-      --color-green: #5DC56B;
-      --color-blue: #3E6BE9;
-      --color-light-gray: #F4F4F5;
-      --color-light-yellow: #FDFCE9;
-      --color-light-blue: #E9F1FD;
-      --color-darker-gray: #D0D0D0;
-      --card-background-default: var(--color-light-yellow);
-      --card-background-prod: var(--color-darker-gray);
-      --card-background-dev: var(--color-light-gray);
-      --card-background-delivery: var(--color-light-blue);
+/* Layout */
+fieldset {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
 
-      --border-default: var(--color-gray);
-      --border-admin: var(--color-red);
-      --border-poweruser: var(--color-green);
-      --border-deployeditor: var(--color-green);
-      --border-readonly: var(--color-gray);
-      --border-delivery: var(--color-blue);
+/* Card */
+fieldset > .saml-account {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0;
+  gap: 8px;
 
-      --text-default: var(--color-black);
-      --text-light: var(--color-white);
+  background-color: #fff;
+  border-radius: 16px;
+  background-color: #fff;
+  border: 1px solid rgb(198, 198, 205);
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-sizing: border-box;
+}
 
-      --font-size-large: 18px;
-      --font-size-small: 12px;
-    }
+.saml-account.prod-account {
+  border-color: rgb(133, 89, 0);
+  background-color: rgb(255, 254, 240);
+}
 
-    fieldset {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 10px;
-    }
+.saml-account.delivery-account {
+  border-color: #006ce0;
+  background-color: rgb(240, 251, 255);
+}
 
-    fieldset > .saml-account {
-      background: var(--card-background-default);
-      border-radius: 4px;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      margin: 0;
-      padding: 8px 12px;
-      gap: 6px;
-    }
+.saml-account .saml-account {
+  margin: 0;
+  padding: 0;
+  display: flex !important;
+  gap: 8px
+}
 
-    .saml-account.prod-account {
-      background: var(--card-background-prod) !important;
-    }
+/* Card Title */
+.saml-account-name {
+  font-family: "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.005em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-    .saml-account.dev-account {
-      background: var(--card-background-dev) !important;
-    }
+/* Account Number */
+.saml-account-name .account-number {
+  font-family: "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.005em;
+}
 
-    .saml-account.delivery-account {
-      background: var(--card-background-delivery) !important;
-    }
+/* Primary Button */
+.saml-role label {
+  display: block;
+  white-space: nowrap;
 
-    .saml-account .saml-account {
-      margin: 0;
-      padding: 0;
-      display: block !important;
-    }
+  /* Core button styles */
+  padding: 4px 20px;
+  border: 2px solid #006ce0;
+  border-radius: 20px;
 
-    .saml-account-name {
-      font-size: var(--font-size-large);
-      font-weight: normal;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+  /* Typography */
+  font-family: "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.005em;
 
-    .saml-account-name .account-number {
-      font-size: var(--font-size-small);
-    }
+  /* Colors & Interaction */
+  background-color: #006ce0;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
 
-    .clickable-radio {
-      display: inline-block;
-      margin: 0;
-    }
+  &:hover {
+    border-color: #002b66;
+    background-color: #002b66;
+  }
 
-    .clickable-radio label {
-      cursor: pointer;
-      font-size: var(--font-size-small);
-      font-weight: normal;
-      text-align: center;
-      display: block;
-      padding: 5px 8px;
-      border-radius: 4px;
-      background: var(--color-white);
-      border: 1px solid var(--border-default);
-      white-space: nowrap;
-      color: var(--text-default) !important;
-    }
+  &:active {
+    background-color: #002b66;
+    border-color: #002b66;
+  }
+}
 
-    .clickable-radio label:hover {
-      filter: brightness(85%);
-      color: var(--text-default) !important;
-    }
+/* Secondary Button */
+.saml-role.readonly label {
+  border: 2px solid #006ce0 !important;
+  background-color: #fff !important;
+  color: #006ce0 !important;
+  &:hover {
+    border-color: #002b66 !important;
+    color: #002b66 !important;
+    background-color: #f0fbff !important;
+  }
+  &:active {
+    background-color: #d1f1ff !important;
+    border-color: #002b66 !important;
+    color: #002b66 !important;
+  }
+}`);
 
-    .clickable-radio.admin label {
-      background: var(--border-admin) !important;
-      border: 1px solid var(--border-admin) !important;
-      color: var(--text-light) !important;
-    }
+  function cleanAccountLabels() {
+    document.querySelectorAll(".saml-account-name").forEach((account) => {
+      account.innerHTML = account.textContent
+        .replace(/\((\d+)\)/, '<span class="account-number">($1)</span>')
+        .replace(/^Account:\s*/, "")
+        .replace(/^dhi-/i, "");
+    });
+  }
 
-    .clickable-radio.admin label:hover {
-      filter: brightness(75%);
-      color: var(--text-light) !important;
-    }
+  function highlightEnvAccounts() {
+    document.querySelectorAll(".saml-account").forEach((account) => {
+      const nameElement = account.querySelector(".saml-account-name");
+      if (nameElement) {
+        const text = nameElement.textContent.toLowerCase();
+        if (text.includes("prod")) {
+          account.classList.add("prod-account");
+        } else if (text.includes("dev")) {
+          account.classList.add("dev-account");
+        } else if (text.includes("delivery")) {
+          account.classList.add("delivery-account");
+        }
+      }
 
-    .clickable-radio.poweruser label {
-      background: var(--border-poweruser) !important;
-      border: 1px solid var(--border-poweruser) !important;
-      color: var(--text-light) !important;
-    }
+      account.querySelectorAll(".clickable-radio label").forEach((label) => {
+        let labelText = label.textContent.trim();
+        labelText = labelText.replace(/^DHI-/i, "");
 
-    .clickable-radio.poweruser label:hover {
-      filter: brightness(75%);
-      color: var(--text-light) !important;
-    }
+        label.textContent = labelText;
 
-    .clickable-radio.deployeditor label {
-      background: var(--border-deployeditor) !important;
-      border: 1px solid var(--border-deployeditor) !important;
-      color: var(--text-light) !important;
-    }
+        if (labelText.toLowerCase().includes("admin")) {
+          label.closest(".clickable-radio").classList.add("admin");
+        } else if (labelText.toLowerCase().includes("poweruser")) {
+          label.closest(".clickable-radio").classList.add("poweruser");
+        } else if (labelText.toLowerCase().includes("deployeditor")) {
+          label.closest(".clickable-radio").classList.add("deployeditor");
+        } else if (labelText.toLowerCase().includes("readonly")) {
+          label.closest(".clickable-radio").classList.add("readonly");
+        } else if (labelText.toLowerCase().includes("delivery")) {
+          label.closest(".clickable-radio").classList.add("delivery");
+        }
+      });
+    });
+  }
 
-    .clickable-radio.deployeditor label:hover {
-      filter: brightness(75%);
-      color: var (--text-light) !important;
-    }
+  function autoSubmit() {
+    const form = document.querySelector("#saml_form");
+    if (!form) return;
 
-    .clickable-radio.readonly label {
-      background: var(--color-white) !important;
-      border: 1px solid var(--border-default) !important;
-    }
+    document.querySelectorAll(".saml-role").forEach((role) => {
+      role.addEventListener("click", () => {
+        const radio = role.querySelector('input[type="radio"]');
+        if (radio) {
+          radio.checked = true;
+          form.submit();
+        }
+      });
+    });
+  }
 
-    .clickable-radio.readonly label:hover {
-      filter: brightness(85%);
-      color: var(--text-default) !important;
-    }
+  function init() {
+    cleanAccountLabels();
+    highlightEnvAccounts();
+    autoSubmit();
+  }
 
-    .clickable-radio.delivery label {
-      background: var(--border-delivery) !important;
-      border: 1px solid var(--border-delivery) !important;
-    }
-
-    .clickable-radio.delivery label:hover {
-      filter: brightness(75%);
-      color: var(--text-default) !important;
-    }
-
-    h1.background,
-    #saml_form p,
-    .saml-account > hr,
-    .expandable-container > img,
-    .saml-role input[type="radio"],
-    #input_signin_button,
-    #smallprint {
-      display: none;
-    }
-
-    #content {
-      border: none;
-    }
-  `);
-
-    function cleanAccountLabels() {
-        document.querySelectorAll(".saml-account-name").forEach((account) => {
-            account.innerHTML = account.textContent
-                .replace(/\((\d+)\)/, '<span class="account-number">($1)</span>')
-                .replace(/^Account:\s*/, "")
-                .replace(/^dhi-/i, "");
-        });
-    }
-
-    function highlightEnvAccounts() {
-        document.querySelectorAll(".saml-account").forEach((account) => {
-            const nameElement = account.querySelector(".saml-account-name");
-            if (nameElement) {
-                const text = nameElement.textContent.toLowerCase();
-                if (text.includes("prod")) {
-                    account.classList.add("prod-account");
-                } else if (text.includes("dev")) {
-                    account.classList.add("dev-account");
-                } else if (text.includes("delivery")) {
-                    account.classList.add("delivery-account");
-                }
-            }
-
-            account.querySelectorAll(".clickable-radio label").forEach((label) => {
-                let labelText = label.textContent.trim();
-                labelText = labelText.replace(/^DHI-/i, "");
-
-                label.textContent = labelText;
-
-                if (labelText.toLowerCase().includes("admin")) {
-                    label.closest(".clickable-radio").classList.add("admin");
-                } else if (labelText.toLowerCase().includes("poweruser")) {
-                    label.closest(".clickable-radio").classList.add("poweruser");
-                } else if (labelText.toLowerCase().includes("deployeditor")) {
-                    label.closest(".clickable-radio").classList.add("deployeditor");
-                } else if (labelText.toLowerCase().includes("readonly")) {
-                    label.closest(".clickable-radio").classList.add("readonly");
-                } else if (labelText.toLowerCase().includes("delivery")) {
-                    label.closest(".clickable-radio").classList.add("delivery");
-                }
-            });
-        });
-    }
-
-    function autoSubmit() {
-        const form = document.querySelector("#saml_form");
-        if (!form) return;
-
-        document.querySelectorAll(".saml-role").forEach((role) => {
-            role.addEventListener("click", () => {
-                const radio = role.querySelector('input[type="radio"]');
-                if (radio) {
-                    radio.checked = true;
-                    form.submit();
-                }
-            });
-        });
-    }
-
-    function init() {
-        cleanAccountLabels();
-        highlightEnvAccounts();
-        autoSubmit();
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", init);
-    } else {
-        init();
-    }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();
