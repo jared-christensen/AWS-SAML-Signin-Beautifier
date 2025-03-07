@@ -151,13 +151,14 @@ fieldset > .saml-account {
 `);
 
   // Cleans up the account labels to make them easier to read
-  function cleanAccountLabels() {
-    document.querySelectorAll(".saml-account-name").forEach((account) => {
-      account.innerHTML = account.textContent
+  function cleanAccountLabels(account) {
+    const accountNameElement = account.querySelector(".saml-account-name");
+    if (accountNameElement) {
+      accountNameElement.innerHTML = accountNameElement.textContent
         .replace(/\((\d+)\)/, '<span class="account-number">($1)</span>')
         .replace(/^Account:\s*/, "")
         .replace(/^dhi-/i, "");
-    });
+    }
   }
 
   // Adds classes to accounts based on account name or role
@@ -189,6 +190,7 @@ fieldset > .saml-account {
   // Processes each account element
   function processAccounts() {
     document.querySelectorAll(".saml-account").forEach((account) => {
+      cleanAccountLabels(account);
       addClasses(account);
       addClassToClickableRadios(account);
     });
@@ -204,7 +206,6 @@ fieldset > .saml-account {
   }
 
   function init() {
-    cleanAccountLabels();
     autoSubmit();
     processAccounts();
   }
