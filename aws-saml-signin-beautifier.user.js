@@ -11,6 +11,8 @@
 // ==/UserScript==
 (function () {
   "use strict";
+
+  const favoriteAccounts = ["935695194370", "829315696278", "109147643482"];
   GM_addStyle(`
 
 /* Rests */
@@ -155,7 +157,7 @@ fieldset > .saml-account {
     const accountNameElement = account.querySelector(".saml-account-name");
     if (accountNameElement) {
       accountNameElement.innerHTML = accountNameElement.textContent
-        .replace(/\((\d+)\)/, '<span class="account-number">($1)</span>')
+        .replace(/\((\d+)\)/, '<span class="account-number">$1</span>')
         .replace(/^Account:\s*/, "")
         .replace(/^dhi-/i, "");
     }
