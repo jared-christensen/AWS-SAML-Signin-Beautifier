@@ -189,12 +189,37 @@ fieldset > .saml-account {
     });
   }
 
+  // Adds class to clickable radio buttons
+  function addClassToClickableRadios(account) {
+    account.querySelectorAll(".clickable-radio label").forEach((label) => {
+      let labelText = label.textContent.trim();
+      labelText = labelText.replace(/^DHI-/i, "");
+      label.textContent = labelText;
+      const className = labelText.toLowerCase().replace(/\s+/g, "-");
+      label.closest(".clickable-radio").classList.add(className);
+    });
+  }
+
+  // Moves favorite accounts to the top
+  function moveFavoriteAccounts(account) {
+    const accountNumber = account.querySelector(".account-number").textContent;
+    const index = favoriteAccounts.indexOf(accountNumber);
+    if (index !== -1) {
+      account.classList.add("favorite-account");
+      account.style.order = index;
+      account.style.gridColumn = "span 2";
+    } else {
+      account.style.order = favoriteAccounts.length;
+    }
+  }
+
   // Processes each account element
   function processAccounts() {
-    document.querySelectorAll(".saml-account").forEach((account) => {
+    document.querySelectorAll("fieldset > .saml-account").forEach((account) => {
       cleanAccountLabels(account);
       addClasses(account);
       addClassToClickableRadios(account);
+      moveFavoriteAccounts(account);
     });
   }
 
