@@ -13,6 +13,7 @@
   "use strict";
 
   const favoriteAccounts = ["935695194370", "829315696278", "109147643482"];
+  const accountTypes = ["prod", "dev", "delivery"];
   GM_addStyle(`
 
 /* Rests */
@@ -163,18 +164,16 @@ fieldset > .saml-account {
     }
   }
 
-  // Adds classes to accounts based on account name or role
-  function addClasses(account) {
+  // Adds classes to accounts based on the account name
+  function addAccountClasses(account) {
     const nameElement = account.querySelector(".saml-account-name");
     if (nameElement) {
       const text = nameElement.textContent.toLowerCase();
-      if (text.includes("prod")) {
-        account.classList.add("prod-account");
-      } else if (text.includes("dev")) {
-        account.classList.add("dev-account");
-      } else if (text.includes("delivery")) {
-        account.classList.add("delivery-account");
-      }
+      accountTypes.forEach((type) => {
+        if (text.includes(type)) {
+          account.classList.add(`${type}-account`);
+        }
+      });
     }
   }
 
@@ -217,7 +216,7 @@ fieldset > .saml-account {
   function processAccounts() {
     document.querySelectorAll("fieldset > .saml-account").forEach((account) => {
       cleanAccountLabels(account);
-      addClasses(account);
+      addAccountClasses(account);
       addClassToClickableRadios(account);
       moveFavoriteAccounts(account);
     });
