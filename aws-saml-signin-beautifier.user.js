@@ -14,144 +14,8 @@
 
   const favoriteAccounts = ["935695194370", "829315696278", "109147643482"];
   const accountTypes = ["prod", "dev", "delivery"];
-  GM_addStyle(`
-
-/* Rests */
-.saml-role {
-  display: inline-block;
-  margin: 0;
-}
-h1.background,
-#saml_form p,
-.saml-account > hr,
-.expandable-container > img,
-.saml-role input[type="radio"],
-#input_signin_button,
-#smallprint {
-  display: none;
-}
-#content {
-  border: none;
-}
-
-/* Layout */
-fieldset {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 20px;
-}
-
-/* Card */
-fieldset > .saml-account {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin: 0;
-  gap: 8px;
-
-  background-color: #fff;
-  border-radius: 16px;
-  background-color: #fff;
-  border: 1px solid #c6c6cd;
-  border-radius: 16px;
-  padding: 16px 20px;
-  box-sizing: border-box;
-}
-
-/* Card - Warning */
-.saml-account.prod-account {
-  border-color: #855900;
-  background-color: #fffeF0;
-}
-
-/* Card - Info */
-.saml-account.delivery-account {
-  border-color: #006ce0;
-  background-color: #f0fbff;
-}
-
-/* Card Title */
-.saml-account-name {
-  font-family: "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 22px;
-  letter-spacing: 0.005em;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Account Number */
-.saml-account-name .account-number {
-  font-family: "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: 0.005em;
-}
-
-/* Button Container */
-.saml-account .saml-account {
-  margin: 0;
-  padding: 0;
-  display: flex !important;
-  gap: 8px
-}
-
-
-/* Primary Button */
-.saml-role label {
-  display: block;
-  white-space: nowrap;
-
-  /* Core button styles */
-  padding: 4px 20px;
-  border: 2px solid #006ce0;
-  border-radius: 20px;
-
-  /* Typography */
-  font-family: "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: 0.005em;
-
-  /* Colors & Interaction */
-  background-color: #006ce0;
-  color: #fff;
-  cursor: pointer;
-  text-decoration: none;
-
-  &:hover {
-    border-color: #002b66;
-    background-color: #002b66;
-  }
-
-  &:active {
-    background-color: #002b66;
-    border-color: #002b66;
-  }
-}
-
-/* Secondary Button */
-.saml-role.readonly label {
-  border: 2px solid #006ce0 !important;
-  background-color: #fff !important;
-  color: #006ce0 !important;
-  &:hover {
-    border-color: #002b66 !important;
-    color: #002b66 !important;
-    background-color: #f0fbff !important;
-  }
-  &:active {
-    background-color: #d1f1ff !important;
-    border-color: #002b66 !important;
-    color: #002b66 !important;
-  }
-}
-`);
+  const accountLabelRegEx = /^dhi-/i;
+  const buttonLabelRegEx = /^dhi-/i;
 
   // Cleans up the account labels to make them easier to read
   function cleanAccountLabels(account) {
@@ -160,7 +24,7 @@ fieldset > .saml-account {
       accountNameElement.innerHTML = accountNameElement.textContent
         .replace(/\((\d+)\)/, '<span class="account-number">$1</span>')
         .replace(/^Account:\s*/, "")
-        .replace(/^dhi-/i, "");
+        .replace(accountLabelRegEx, "");
     }
   }
 
@@ -181,18 +45,7 @@ fieldset > .saml-account {
   function addClassToClickableRadios(account) {
     account.querySelectorAll(".clickable-radio label").forEach((label) => {
       let labelText = label.textContent.trim();
-      labelText = labelText.replace(/^DHI-/i, "");
-      label.textContent = labelText;
-      const className = labelText.toLowerCase().replace(/\s+/g, "-");
-      label.closest(".clickable-radio").classList.add(className);
-    });
-  }
-
-  // Adds class to clickable radio buttons
-  function addClassToClickableRadios(account) {
-    account.querySelectorAll(".clickable-radio label").forEach((label) => {
-      let labelText = label.textContent.trim();
-      labelText = labelText.replace(/^DHI-/i, "");
+      labelText = labelText.replace(buttonLabelRegEx, "");
       label.textContent = labelText;
       const className = labelText.toLowerCase().replace(/\s+/g, "-");
       label.closest(".clickable-radio").classList.add(className);
@@ -235,6 +88,140 @@ fieldset > .saml-account {
     autoSubmit();
     processAccounts();
   }
+
+  GM_addStyle(`
+/* Rests */
+.saml-role {
+  display: inline-block;
+  margin: 0;
+}
+h1.background,
+#saml_form p,
+.saml-account > hr,
+.expandable-container > img,
+.saml-role input[type="radio"],
+#input_signin_button,
+#smallprint {
+  display: none;
+}
+#content {
+  border: none;
+}
+
+/* Layout */
+fieldset {
+  font-family: "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif;
+  letter-spacing: 0.005em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Card */
+fieldset > .saml-account {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0;
+  gap: 8px;
+
+  background-color: #fff;
+  border-radius: 16px;
+  background-color: #fff;
+  border: 1px solid #c6c6cd;
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-sizing: border-box;
+}
+
+/* Card - Warning */
+.saml-account.prod-account {
+  border-color: #855900;
+  background-color: #fffeF0;
+}
+
+/* Card - Info */
+.saml-account.delivery-account {
+  border-color: #006ce0;
+  background-color: #f0fbff;
+}
+
+/* Card Title */
+.saml-account-name {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Account Number */
+.saml-account-name .account-number {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+/* Button Container */
+.saml-account .saml-account {
+  margin: 0;
+  padding: 0;
+  display: flex !important;
+  gap: 8px
+}
+
+
+/* Primary Button */
+.saml-role label {
+  display: block;
+  white-space: nowrap;
+
+  /* Core button styles */
+  padding: 4px 20px;
+  border: 2px solid #006ce0;
+  border-radius: 20px;
+
+  /* Typography */
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+
+  /* Colors & Interaction */
+  background-color: #006ce0;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    border-color: #002b66;
+    background-color: #002b66;
+  }
+
+  &:active {
+    background-color: #002b66;
+    border-color: #002b66;
+  }
+}
+
+/* Secondary Button */
+.saml-role.readonly label {
+  border: 2px solid #006ce0 !important;
+  background-color: #fff !important;
+  color: #006ce0 !important;
+  &:hover {
+    border-color: #002b66 !important;
+    color: #002b66 !important;
+    background-color: #f0fbff !important;
+  }
+  &:active {
+    background-color: #d1f1ff !important;
+    border-color: #002b66 !important;
+    color: #002b66 !important;
+  }
+}
+  `);
 
   init();
 })();
