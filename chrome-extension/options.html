@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Extension Options</title>
+    <style>
+      /* Add some basic styling */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Extension Options</h1>
+    <form id="options-form">
+      <label for="favoriteAccounts">Favorite Accounts (comma-separated):</label>
+      <input type="text" id="favoriteAccounts" name="favoriteAccounts" />
+
+      <label for="primaryButtonRegEx">Primary Button RegEx:</label>
+      <input type="text" id="primaryButtonRegEx" name="primaryButtonRegEx" />
+
+      <label for="cautionCardRegEx">Caution Card RegEx:</label>
+      <input type="text" id="cautionCardRegEx" name="cautionCardRegEx" />
+
+      <label for="infoCardRegEx">Info Card RegEx:</label>
+      <input type="text" id="infoCardRegEx" name="infoCardRegEx" />
+
+      <label for="removeFromAccountLabelRegEx"
+        >Remove From Account Label RegEx:</label
+      >
+      <input
+        type="text"
+        id="removeFromAccountLabelRegEx"
+        name="removeFromAccountLabelRegEx"
+      />
+
+      <label for="removeFromButtonLabelRegEx"
+        >Remove From Button Label RegEx:</label
+      >
+      <input
+        type="text"
+        id="removeFromButtonLabelRegEx"
+        name="removeFromButtonLabelRegEx"
+      />
+
+      <button type="submit">Save</button>
+    </form>
+    <script src="options.js"></script>
+  </body>
+</html>

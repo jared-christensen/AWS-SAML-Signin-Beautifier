@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "AWS SAML Signin Beautifier",
+  "version": "1.0.0",
+  "description": "Enhances the AWS SAML sign-in page with UI improvements, better readability, and quality-of-life tweaks.",
+  "author": "Jared Christensen",
+  "permissions": ["activeTab", "storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://signin.aws.amazon.com/saml"],
+      "js": ["aws-saml-signin-beautifier.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "options_page": "options.html"
+}

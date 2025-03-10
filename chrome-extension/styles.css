@@ -1,0 +1,119 @@
+/* Rests */
+.saml-role {
+  display: inline-block !important;
+  margin: 0 !important;
+}
+h1.background,
+#saml_form p,
+.saml-account > hr,
+.expandable-container > img,
+.saml-role input[type="radio"],
+#input_signin_button,
+#smallprint {
+  display: none !important;
+}
+#content {
+  border: none !important;
+}
+
+/* Grid */
+#content fieldset {
+  font-family: "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif !important;
+  letter-spacing: 0.005em !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 20px !important;
+  margin-top: 20px !important;
+}
+
+/* Card */
+.card {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: wrap !important;
+  margin: 0 !important;
+  gap: 8px !important;
+  background-color: #fff !important;
+  border-radius: 16px !important;
+  background-color: #fff !important;
+  border: 1px solid #c6c6cd !important;
+  border-radius: 16px !important;
+  padding: 16px 20px !important;
+  box-sizing: border-box !important;
+}
+.card.caution {
+  border-color: #855900 !important;
+  background-color: #fffef0 !important;
+}
+.card.info {
+  border-color: #006ce0 !important;
+  background-color: #f0fbff !important;
+}
+
+/* Card Title */
+.card .saml-account-name {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 22px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+/* Account Number */
+.card .account-number {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 20px !important;
+}
+
+/* Button Container */
+.card .saml-account {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important !important;
+  gap: 8px !important;
+}
+
+/* Button */
+.btn {
+  display: block !important;
+  white-space: nowrap !important;
+  padding: 4px 20px !important;
+  border-radius: 20px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 20px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+.secondary-btn {
+  border: 2px solid #006ce0 !important;
+  background-color: #ffffff !important;
+  color: #006ce0 !important;
+  &:hover {
+    border-color: #002b66 !important;
+    color: #002b66 !important;
+    background-color: #f0fbff !important;
+  }
+  &:active {
+    border-color: #002b66 !important;
+    color: #002b66 !important;
+    background-color: #d1f1ff !important;
+  }
+}
+.primary-btn {
+  border: 2px solid #006ce0 !important;
+  background-color: #006ce0 !important;
+  color: #fff !important;
+  &:hover {
+    border-color: #002b66 !important;
+    border-color: #002b66 !important;
+    background-color: #002b66 !important;
+  }
+  &:active {
+    border-color: #002b66 !important;
+    background-color: #002b66 !important;
+    border-color: #002b66 !important;
+  }
+}
