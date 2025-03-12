@@ -1,6 +1,6 @@
-# AWS-SAML-Signin-Beautifier
+# AWS SAML Sign-in Beautifier
 
-AWS-SAML-Signin-Beautifier is a project aimed at improving the AWS SAML sign-in page by making role selection faster, enhancing UI readability, and adding colors for easier scanning. This is especially useful for users managing multiple AWS accounts.
+AWS SAML Sign-in Beautifier is a project aimed at improving the AWS SAML sign-in page by making role selection faster, enhancing UI readability, and adding colors for easier scanning. This is especially useful for users managing multiple AWS accounts.
 
 ## What This Project Does
 
