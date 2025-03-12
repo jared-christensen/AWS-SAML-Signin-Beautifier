@@ -14,35 +14,24 @@
       const favoriteAccounts = items.favoriteAccounts
         ? items.favoriteAccounts.split(",")
         : [];
-      const primaryButtonRegEx = new RegExp(
-        items.primaryButtonRegEx || "",
-        "i"
-      );
-      const cautionCardRegEx = new RegExp(items.cautionCardRegEx || "", "i");
-      const infoCardRegEx = new RegExp(items.infoCardRegEx || "", "i");
-      const removeFromAccountLabelRegEx = new RegExp(
-        items.removeFromAccountLabelRegEx || "",
-        "i"
-      );
-      const removeFromButtonLabelRegEx = new RegExp(
-        items.removeFromButtonLabelRegEx || "",
-        "i"
-      );
 
-      // Sets the card type based on the account name
-      function setCardType(account) {
-        const nameElement = account.querySelector(".saml-account-name");
-        account.classList.add("card");
-        if (nameElement) {
-          const text = nameElement.textContent.toLowerCase();
-          if (cautionCardRegEx.test(text)) {
-            account.classList.add("caution");
-          }
-          if (infoCardRegEx.test(text)) {
-            account.classList.add("info");
-          }
+      function parseRegEx(regexString) {
+        if (!regexString) {
+          return new RegExp("");
         }
+        const match = regexString.match(/\/(.*)\/([gimuy]*)/);
+        return new RegExp(match[1], match[2]);
       }
+
+      const primaryButtonRegEx = parseRegEx(items.primaryButtonRegEx);
+      const cautionCardRegEx = parseRegEx(items.cautionCardRegEx);
+      const infoCardRegEx = parseRegEx(items.infoCardRegEx);
+      const removeFromAccountLabelRegEx = parseRegEx(
+        items.removeFromAccountLabelRegEx
+      );
+      const removeFromButtonLabelRegEx = parseRegEx(
+        items.removeFromButtonLabelRegEx
+      );
 
       // Prettifies the account labels by removing the account prefix and any unwanted text
       function prettifyAccountLabels(account) {
@@ -55,6 +44,22 @@
         }
       }
 
+      // Sets the card type based on the account name
+      function setCardType(account) {
+        const nameElement = account.querySelector(".saml-account-name");
+        account.classList.add("card");
+        console.log("nameElement", nameElement);
+        if (nameElement) {
+          const text = nameElement.textContent.toLowerCase();
+          if (items.cautionCardRegEx && cautionCardRegEx.test(text)) {
+            account.classList.add("caution");
+          }
+          if (items.infoCardRegEx && infoCardRegEx.test(text)) {
+            account.classList.add("info");
+          }
+        }
+      }
+
       // Prettifies the buttons by removing any unwanted text and setting button prominence
       function prettifyButtons(account) {
         account.querySelectorAll(".clickable-radio label").forEach((label) => {
@@ -62,7 +67,7 @@
           labelText = labelText.replace(removeFromButtonLabelRegEx, "");
           label.textContent = labelText;
           label.classList.add("btn");
-          if (primaryButtonRegEx.test(labelText)) {
+          if (items.primaryButtonRegEx && primaryButtonRegEx.test(labelText)) {
             label.classList.add("primary-btn");
           } else {
             label.classList.add("secondary-btn");
@@ -89,8 +94,8 @@
         document
           .querySelectorAll("fieldset > .saml-account")
           .forEach((account) => {
-            setCardType(account);
             prettifyAccountLabels(account);
+            setCardType(account);
             prettifyButtons(account);
             moveFavoriteAccounts(account);
           });
