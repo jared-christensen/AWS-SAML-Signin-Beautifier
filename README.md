@@ -1,6 +1,6 @@
-# AWS SAML Sign-in Beautifier
+# AWS SAML Signin Beautifier
 
-AWS SAML Sign-in Beautifier is a project aimed at improving the AWS SAML sign-in page by making role selection faster, enhancing UI readability, and adding colors for easier scanning. This is especially useful for users managing multiple AWS accounts.
+AWS SAML Signin Beautifier is a project aimed at improving the AWS SAML Signin page by making role selection faster, enhancing UI readability, and adding colors for easier scanning. This is especially useful for users managing multiple AWS accounts.
 
 ## What This Project Does
 
@@ -20,7 +20,7 @@ We are currently working on a Chrome extension that will provide the same enhanc
 
 ### 2. Tampermonkey Script (Available Now)
 
-You can use the Tampermonkey script right now to improve your AWS SAML sign-in experience. For installation instructions, please refer to the [Tampermonkey README](tampermonkey/README.md).
+You can use the Tampermonkey script right now to improve your AWS SAML Signin experience. For installation instructions, please refer to the [Tampermonkey README](tampermonkey/README.md).
 
 ## Screenshot
 
