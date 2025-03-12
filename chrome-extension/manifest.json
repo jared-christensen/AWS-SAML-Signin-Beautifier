@@ -5,7 +5,7 @@
   "description": "Enhances the AWS SAML sign-in page with UI improvements, better readability, and quality-of-life tweaks.",
   "homepage_url": "https://github.com/jared-christensen/AWS-SAML-Signin-Beautifier/blob/main/chrome-extension/README.md",
   "author": "Jared Christensen",
-  "permissions": ["activeTab", "storage"],
+  "permissions": ["storage"],
   "content_scripts": [
     {
       "matches": ["https://signin.aws.amazon.com/saml"],
