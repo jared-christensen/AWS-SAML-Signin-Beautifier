@@ -16,7 +16,7 @@ Designed for users managing multiple AWS accounts.
 
 ### 1. Chrome Extension (In Progress)
 
-We are currently working on a Chrome extension that will provide the same enhancements. Until it is submitted to the store, you will need to install it manually. For more details, please refer to the [Chrome Extension folder](extension/README.md).
+We are currently working on a Chrome extension that will provide the same enhancements. Until it is submitted to the store, you will need to install it manually. For more details, please refer to the [Chrome Extension](https://github.com/jared-christensen/AWS-SAML-Signin-Beautifier/blob/main/chrome-extension/README.md).
 
 ### 2. Tampermonkey Script (Available Now)
 
