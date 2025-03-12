@@ -1,9 +1,10 @@
 # AWS-SAML-Signin-Beautifier
 
-A Tampermonkey script to improve the AWS SAML sign-in page by making role selection faster, enhancing UI readability, and adding colors for easier scanning.
+AWS-SAML-Signin-Beautifier is a project aimed at improving the AWS SAML sign-in page by making role selection faster, enhancing UI readability, and adding colors for easier scanning. This is especially useful for users managing multiple AWS accounts.
 
-## What This Script Does
-If your company manages many AWS accounts, selecting the right role from the AWS SAML login page (`https://signin.aws.amazon.com/saml`) can be frustrating. This script removes friction from the process by:
+## What This Project Does
+
+If your company manages many AWS accounts, selecting the right role from the AWS SAML login page (`https://signin.aws.amazon.com/saml`) can be frustrating. This project removes friction from the process by:
 
 - Turning role radio buttons into submit buttons – No need to scroll down and click "Sign In"
 - Making the design easier to scan – Quickly find the right role
@@ -11,20 +12,16 @@ If your company manages many AWS accounts, selecting the right role from the AWS
 
 Designed for users managing multiple AWS accounts.
 
----
+## Options
 
-## Installation
-### 1. Install Tampermonkey
-First, install Tampermonkey, a popular userscript manager:
-- [Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
-- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
-- [Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/)
+### 1. Chromebook Extension (In Progress)
 
-### 2. Install the Script
-Click below to install directly in Tampermonkey:
-[Install AWS-SAML-Signin-Beautifier](https://github.com/jared-christensen/AWS-SAML-Signin-Beautifier/raw/main/aws-saml-signin-beautifier.user.js)
+We are currently working on a Chromebook extension that will provide the same enhancements. Until it is submitted to the store, you will need to install it manually.
 
-Tampermonkey should detect the script and prompt you to install it.
+### 2. Tampermonkey Script (Available Now)
 
-### 3. Done!
-Now, whenever you visit `https://signin.aws.amazon.com/saml`, the script will improve the role selection experience automatically.
+You can use the Tampermonkey script right now to improve your AWS SAML sign-in experience. For installation instructions, please refer to the [Tampermonkey README](tampermonkey/README.md).
+
+## Screenshot
+
+![Screenshot](images/screenshot.png)
