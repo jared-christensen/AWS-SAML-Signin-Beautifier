@@ -10,11 +10,11 @@ Our Chrome extension does not collect any personal data from users. We do not tr
 
 The extension requires certain permissions to function properly:
 
-- **Access to AWS SAML sign-in page:** This permission is necessary to modify the appearance and functionality of the AWS SAML sign-in page to improve your experience.
+- **Access to AWS SAML Signin page:** This permission is necessary to modify the appearance and functionality of the AWS SAML Signin page to improve your experience.
 
 ## How We Use Information
 
-Since we do not collect any personal data, there is no information to use or share. The permissions requested are solely for the purpose of enhancing the AWS SAML sign-in page.
+Since we do not collect any personal data, there is no information to use or share. The permissions requested are solely for the purpose of enhancing the AWS SAML Signin page.
 
 ## Changes to This Privacy Policy
 

@@ -2,7 +2,7 @@
 // @name         AWS-SAML-Signin-Beautifier
 // @namespace    https://github.com/jared-christensen/AWS-SAML-Signin-Beautifier
 // @version      1.2.0
-// @description  Enhances the AWS SAML sign-in page with UI improvements, better readability, and quality-of-life tweaks.
+// @description  Enhances the AWS SAML Signin page with UI improvements, better readability, and quality-of-life tweaks.
 // @author       Jared Christensen
 // @match        https://signin.aws.amazon.com/saml
 // @grant        GM_addStyle

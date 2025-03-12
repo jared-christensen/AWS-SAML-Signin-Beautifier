@@ -1,6 +1,6 @@
 # AWS-SAML-Signin-Beautifier
 
-A Tampermonkey script to improve the AWS SAML sign-in page by making role selection faster, enhancing UI readability, and adding colors for easier scanning.
+A Tampermonkey script to improve the AWS SAML Signin page by making role selection faster, enhancing UI readability, and adding colors for easier scanning.
 
 ## What This Script Does
 
@@ -31,6 +31,6 @@ Click below to install directly in Tampermonkey:
 
 Tampermonkey should detect the script and prompt you to install it.
 
-### 3. Done!
+### 3. Done
 
 Now, whenever you visit `https://signin.aws.amazon.com/saml`, the script will improve the role selection experience automatically.

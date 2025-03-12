@@ -1,6 +1,6 @@
 # AWS-SAML-Signin-Beautifier
 
-A Chrome extension to improve the AWS SAML sign-in page by making role selection faster, enhancing UI readability, and adding colors for easier scanning.
+A Chrome extension to improve the AWS SAML Signin page by making role selection faster, enhancing UI readability, and adding colors for easier scanning.
 
 ## What This Extension Does
 
