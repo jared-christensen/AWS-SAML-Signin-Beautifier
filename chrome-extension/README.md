@@ -2,12 +2,15 @@
 
 A Chrome extension to improve the AWS SAML Signin page by making role selection faster, enhancing UI readability, and adding colors for easier scanning.
 
-## What This Extension Does
+For a detailed description of what this extension does, please refer to the [main README](../README.md).
 
-If your company manages many AWS accounts, selecting the right role from the AWS SAML login page (`https://signin.aws.amazon.com/saml`) can be frustrating. This extension removes friction from the process by:
+## Installation
 
-- Turning role radio buttons into submit buttons – No need to scroll down and click "Sign In"
-- Making the design easier to scan – Quickly find the right role
-- Adding color coding for clarity – Visually differentiate accounts
+We are currently working on getting this extension into the Chrome Web Store. Until then, you can install it manually by following these steps:
 
-Designed for users managing multiple AWS accounts.
+1. Clone the repository.
+2. Open Chrome and navigate to `chrome://extensions/`.
+3. Enable "Developer mode" in the top right corner.
+4. Click "Load unpacked" and select the `chrome-extension` directory from the cloned repository.
+
+We hope to have it available in the Chrome Web Store soon.
