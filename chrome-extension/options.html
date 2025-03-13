@@ -11,10 +11,28 @@
       label {
         display: block;
         margin-top: 10px;
+        font-weight: bold.;
       }
       input[type="text"] {
         width: 100%;
         padding: 5px;
+        margin-top: 5px;
+      }
+      .helper-text {
+        font-size: 0.9em;
+        color: #666;
+        margin-bottom: 10px;
+      }
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
       }
     </style>
   </head>
@@ -22,16 +40,46 @@
     <h1>Extension Options</h1>
     <form id="options-form">
       <label for="favoriteAccounts">Favorite Accounts (comma-separated):</label>
-      <input type="text" id="favoriteAccounts" name="favoriteAccounts" />
+      <input
+        type="text"
+        id="favoriteAccounts"
+        name="favoriteAccounts"
+        placeholder="0123456789,0123456789"
+      />
+      <div class="helper-text">
+        Enter your favorite accounts separated by commas.
+      </div>
 
       <label for="primaryButtonRegEx">Primary Button RegEx:</label>
-      <input type="text" id="primaryButtonRegEx" name="primaryButtonRegEx" />
+      <input
+        type="text"
+        id="primaryButtonRegEx"
+        name="primaryButtonRegEx"
+        placeholder="/Admin|Billing|Editor/i"
+      />
+      <div class="helper-text">
+        Regular expression to identify the primary button.
+      </div>
 
       <label for="cautionCardRegEx">Caution Card RegEx:</label>
-      <input type="text" id="cautionCardRegEx" name="cautionCardRegEx" />
+      <input
+        type="text"
+        id="cautionCardRegEx"
+        name="cautionCardRegEx"
+        placeholder="/production/i"
+      />
+      <div class="helper-text">
+        Regular expression to identify caution cards.
+      </div>
 
       <label for="infoCardRegEx">Info Card RegEx:</label>
-      <input type="text" id="infoCardRegEx" name="infoCardRegEx" />
+      <input
+        type="text"
+        id="infoCardRegEx"
+        name="infoCardRegEx"
+        placeholder="/delivery/i"
+      />
+      <div class="helper-text">Regular expression to identify info cards.</div>
 
       <label for="removeFromAccountLabelRegEx"
         >Remove From Account Label RegEx:</label
@@ -40,7 +88,12 @@
         type="text"
         id="removeFromAccountLabelRegEx"
         name="removeFromAccountLabelRegEx"
+        placeholder="/^myCompanyName-/i"
       />
+      <div class="helper-text">
+        Regular expression to remove unwanted repetitive text from account
+        labels.
+      </div>
 
       <label for="removeFromButtonLabelRegEx"
         >Remove From Button Label RegEx:</label
@@ -49,7 +102,12 @@
         type="text"
         id="removeFromButtonLabelRegEx"
         name="removeFromButtonLabelRegEx"
+        placeholder="/^myCompanyName-/i"
       />
+      <div class="helper-text">
+        Regular expression to remove unwanted repetitive text from button
+        labels.
+      </div>
 
       <button type="submit">Save</button>
     </form>
