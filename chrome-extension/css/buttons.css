@@ -1,0 +1,42 @@
+/* Button */
+.btn {
+  display: block !important;
+  white-space: nowrap !important;
+  padding: 4px 20px !important;
+  border-radius: 20px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 20px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+.secondary-btn {
+  border: 2px solid #006ce0 !important;
+  background-color: #ffffff !important;
+  color: #006ce0 !important;
+  &:hover {
+    border-color: #002b66 !important;
+    color: #002b66 !important;
+    background-color: #f0fbff !important;
+  }
+  &:active {
+    border-color: #002b66 !important;
+    color: #002b66 !important;
+    background-color: #d1f1ff !important;
+  }
+}
+.primary-btn {
+  border: 2px solid #006ce0 !important;
+  background-color: #006ce0 !important;
+  color: #fff !important;
+  &:hover {
+    border-color: #002b66 !important;
+    border-color: #002b66 !important;
+    background-color: #002b66 !important;
+  }
+  &:active {
+    border-color: #002b66 !important;
+    background-color: #002b66 !important;
+    border-color: #002b66 !important;
+  }
+}

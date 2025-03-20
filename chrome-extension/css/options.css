@@ -1,0 +1,50 @@
+body {
+  font-family: "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.field {
+  margin: 10px 0;
+}
+
+.field label {
+  color: #0f141a;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.field .description {
+  color: rgb(101, 104, 113);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.field input[type="text"] {
+  box-sizing: border-box;
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 4px 12px;
+  font-weight: 400;
+  width: 100%;
+  margin-top: 4px;
+
+  border: 2px solid rgb(140, 140, 148);
+  border-radius: 8px;
+}

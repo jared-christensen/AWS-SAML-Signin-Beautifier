@@ -1,116 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Extension Options</title>
-    <style>
-      /* Add some basic styling */
-      body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-      }
-      label {
-        display: block;
-        margin-top: 10px;
-        font-weight: bold.;
-      }
-      input[type="text"] {
-        width: 100%;
-        padding: 5px;
-        margin-top: 5px;
-      }
-      .helper-text {
-        font-size: 0.9em;
-        color: #666;
-        margin-bottom: 10px;
-      }
-      button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: #0056b3;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/options.css" />
+    <link rel="stylesheet" type="text/css" href="css/buttons.css" />
   </head>
   <body>
-    <h1>Extension Options</h1>
-    <form id="options-form">
-      <label for="favoriteAccounts">Favorite Accounts (comma-separated):</label>
-      <input
-        type="text"
-        id="favoriteAccounts"
-        name="favoriteAccounts"
-        placeholder="0123456789,0123456789"
-      />
-      <div class="helper-text">
-        Enter your favorite accounts separated by commas.
-      </div>
+    <div class="container">
+      <form id="options-form">
+        <div class="field">
+          <label for="favoriteAccounts">Favorite Accounts</label>
+          <div class="description">
+            Enter the Account IDs of your favorite accounts, separated by
+            commas. These accounts will be pinned to the top of the page for
+            quick access.
+          </div>
+          <input
+            type="text"
+            id="favoriteAccounts"
+            name="favoriteAccounts"
+            placeholder="0123456789,0123456789"
+          />
+        </div>
 
-      <label for="primaryButtonRegEx">Primary Button RegEx:</label>
-      <input
-        type="text"
-        id="primaryButtonRegEx"
-        name="primaryButtonRegEx"
-        placeholder="/Admin|Billing|Editor/i"
-      />
-      <div class="helper-text">
-        Regular expression to identify the primary button.
-      </div>
+        <div class="field">
+          <label for="primaryButtonRegEx">Primary Buttons</label>
+          <div class="description">
+            Button labels matching this regular expression will be styled as
+            primary buttons. Use this to highlight the most important buttons.
+          </div>
+          <input
+            type="text"
+            id="primaryButtonRegEx"
+            name="primaryButtonRegEx"
+            placeholder="/Admin|Billing|Editor/i"
+          />
+        </div>
 
-      <label for="cautionCardRegEx">Caution Card RegEx:</label>
-      <input
-        type="text"
-        id="cautionCardRegEx"
-        name="cautionCardRegEx"
-        placeholder="/production/i"
-      />
-      <div class="helper-text">
-        Regular expression to identify caution cards.
-      </div>
+        <div class="field">
+          <label for="cautionCardRegEx">Caution Cards</label>
+          <div class="description">
+            Account names matching this regular expression will be highlighted
+            as caution cards. Use this to mark accounts that require extra
+            attention, such as production environments.
+          </div>
+          <input
+            type="text"
+            id="cautionCardRegEx"
+            name="cautionCardRegEx"
+            placeholder="/production/i"
+          />
+        </div>
 
-      <label for="infoCardRegEx">Info Card RegEx:</label>
-      <input
-        type="text"
-        id="infoCardRegEx"
-        name="infoCardRegEx"
-        placeholder="/delivery/i"
-      />
-      <div class="helper-text">Regular expression to identify info cards.</div>
+        <div class="field">
+          <label for="infoCardRegEx">Info Cards</label>
+          <div class="description">
+            Account names matching this regular expression will be highlighted
+            as info cards. Use this to mark accounts that have special
+            significance.
+          </div>
+          <input
+            type="text"
+            id="infoCardRegEx"
+            name="infoCardRegEx"
+            placeholder="/delivery/i"
+          />
+        </div>
 
-      <label for="removeFromAccountLabelRegEx"
-        >Remove From Account Label RegEx:</label
-      >
-      <input
-        type="text"
-        id="removeFromAccountLabelRegEx"
-        name="removeFromAccountLabelRegEx"
-        placeholder="/^myCompanyName-/i"
-      />
-      <div class="helper-text">
-        Regular expression to remove unwanted repetitive text from account
-        labels.
-      </div>
+        <div class="field">
+          <label for="removeFromAccountLabelRegEx"
+            >Remove Repetitive Account Label Text</label
+          >
+          <div class="description">
+            Text matching this regular expression will be removed from account
+            labels. Use this to remove repetitive prefixes, such as a company
+            name.
+          </div>
+          <input
+            type="text"
+            id="removeFromAccountLabelRegEx"
+            name="removeFromAccountLabelRegEx"
+            placeholder="/^myCompanyName-/i"
+          />
+        </div>
 
-      <label for="removeFromButtonLabelRegEx"
-        >Remove From Button Label RegEx:</label
-      >
-      <input
-        type="text"
-        id="removeFromButtonLabelRegEx"
-        name="removeFromButtonLabelRegEx"
-        placeholder="/^myCompanyName-/i"
-      />
-      <div class="helper-text">
-        Regular expression to remove unwanted repetitive text from button
-        labels.
-      </div>
+        <div class="field">
+          <label for="removeFromButtonLabelRegEx"
+            >Remove Repetitive Button Label Text</label
+          >
+          <div class="description">
+            Text matching this regular expression will be removed from button
+            labels. Use this to remove repetitive prefixes, such as a company
+            name.
+          </div>
+          <input
+            type="text"
+            id="removeFromButtonLabelRegEx"
+            name="removeFromButtonLabelRegEx"
+            placeholder="/^myCompanyName-/i"
+          />
+        </div>
 
-      <button type="submit">Save</button>
-    </form>
+        <button class="btn primary-btn" type="submit">Save</button>
+      </form>
+    </div>
     <script src="options.js"></script>
   </body>
 </html>
