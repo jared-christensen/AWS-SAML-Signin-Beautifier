@@ -12,7 +12,7 @@
     ],
     (items) => {
       const favoriteAccounts = items.favoriteAccounts
-        ? items.favoriteAccounts.split(",")
+        ? items.favoriteAccounts.split(",").map((account) => account.trim())
         : [];
 
       function parseRegEx(regexString) {
