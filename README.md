@@ -14,13 +14,9 @@ Designed for users managing multiple AWS accounts.
 
 ## Options
 
-### 1. Chrome Extension (In Progress)
+### Chrome Extension (Available Now)
 
-We are currently working on a Chrome extension that will provide the same enhancements. Until it is submitted to the store, you will need to install it manually. For more details, please refer to the [Chrome Extension](https://github.com/jared-christensen/AWS-SAML-Signin-Beautifier/blob/main/chrome-extension/README.md).
-
-### 2. Tampermonkey Script (Available Now)
-
-You can use the Tampermonkey script right now to improve your AWS SAML Signin experience. For installation instructions, please refer to the [Tampermonkey README](tampermonkey/README.md).
+You can install the Chrome extension from the Chrome Web Store. We are considering developing a Firefox extension and exploring other browsers if there is enough interest. For more details, please refer to the [Chrome Extension](https://github.com/jared-christensen/AWS-SAML-Signin-Beautifier/blob/main/chrome-extension/README.md).
 
 ## Screenshot
 
