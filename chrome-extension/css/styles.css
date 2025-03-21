@@ -1,3 +1,33 @@
+:root {
+  --html-color: #0f141a;
+  --html-background-color: #ffffff;
+
+  --card-border-color: #c6c6cd;
+  --card-background-color: #ffffff;
+
+  --card-caution-border-color: #855900;
+  --card-caution-background-color: #fffef0;
+
+  --card-info-border-color: #006ce0;
+  --card-info-background-color: #f0fbff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --html-color: #ebebf0;
+    --html-background-color: #161d26;
+
+    --card-border-color: #434650;
+    --card-background-color: #161d26;
+
+    --card-caution-border-color: #fbd332;
+    --card-caution-background-color: #191100;
+
+    --card-info-border-color: #42b4ff;
+    --card-info-background-color: #001129;
+  }
+}
+
 /* Rests */
 .saml-role {
   display: inline-block !important;
@@ -14,6 +44,11 @@ h1.background,
 }
 #content {
   border: none !important;
+}
+
+html {
+  color: var(--html-color);
+  background-color: var(--html-background-color);
 }
 
 /* Grid */
@@ -33,21 +68,20 @@ h1.background,
   flex-wrap: wrap !important;
   margin: 0 !important;
   gap: 8px !important;
-  background-color: #fff !important;
+  background-color: var(--card-background-color) !important;
   border-radius: 16px !important;
-  background-color: #fff !important;
-  border: 1px solid #c6c6cd !important;
+  border: 2px solid var(--card-border-color) !important;
   border-radius: 16px !important;
   padding: 16px 20px !important;
   box-sizing: border-box !important;
 }
 .card.caution {
-  border-color: #855900 !important;
-  background-color: #fffef0 !important;
+  border-color: var(--card-caution-border-color) !important;
+  background-color: var(--card-caution-background-color) !important;
 }
 .card.info {
-  border-color: #006ce0 !important;
-  background-color: #f0fbff !important;
+  border-color: var(--card-info-border-color) !important;
+  background-color: var(--card-info-background-color) !important;
 }
 
 /* Card Title */
