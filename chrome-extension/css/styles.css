@@ -106,5 +106,6 @@ html {
   margin: 0 !important;
   padding: 0 !important;
   display: flex !important;
+  flex-wrap: wrap !important;
   gap: 8px !important;
 }
