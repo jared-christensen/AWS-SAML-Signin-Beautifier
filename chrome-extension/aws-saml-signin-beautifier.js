@@ -175,13 +175,16 @@
         filterInput.focus();
 
         filterInput.addEventListener("input", (e) => {
-          const filterValue = e.target.value.toLowerCase();
+          const filterValue = e.target.value
+            .toLowerCase()
+            .replace(/[-_\s]/g, "");
           const cards = document.querySelectorAll(".card");
 
           cards.forEach((card) => {
             const accountName = card
               .querySelector(".saml-account-name")
-              .textContent.toLowerCase();
+              .textContent.toLowerCase()
+              .replace(/[-_\s]/g, "");
             if (accountName.includes(filterValue)) {
               card.classList.add("show");
               card.classList.remove("hide");
