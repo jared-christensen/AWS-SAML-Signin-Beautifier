@@ -75,6 +75,12 @@ html {
   padding: 16px 20px !important;
   box-sizing: border-box !important;
 }
+.card.hide {
+  display: none !important;
+}
+.card.show {
+  display: flex !important;
+}
 .card.caution {
   border-color: var(--card-caution-border-color) !important;
   background-color: var(--card-caution-background-color) !important;
@@ -108,4 +114,9 @@ html {
   display: flex !important;
   flex-wrap: wrap !important;
   gap: 8px !important;
+}
+
+/* Filter */
+.filter {
+  margin-top: 20px !important;
 }

@@ -10,7 +10,7 @@
     {
       "matches": ["https://signin.aws.amazon.com/saml"],
       "js": ["aws-saml-signin-beautifier.js"],
-      "css": ["css/styles.css", "css/buttons.css"],
+      "css": ["css/styles.css", "css/buttons.css", "css/field.css"],
       "run_at": "document_end"
     }
   ],

@@ -122,14 +122,6 @@
         }
       }
 
-      // Focuses the first button
-      function focusFirstButton() {
-        const firstButton = document.querySelector("button[data-role-value]");
-        if (firstButton) {
-          firstButton.focus();
-        }
-      }
-
       // Loops through all accounts cards and processes them
       function processAccounts() {
         document
@@ -162,8 +154,47 @@
           });
       }
 
+      // Adds a filter input to filter account cards by account name.
+      function addAccountFilter() {
+        const filterContainer = document.createElement("div");
+        filterContainer.classList.add("field");
+        filterContainer.classList.add("filter");
+
+        const filterInput = document.createElement("input");
+        filterInput.id = "filter-input";
+        filterInput.type = "text";
+        filterInput.placeholder = "Filter by account name...";
+
+        filterContainer.appendChild(filterInput);
+
+        const form = document.querySelector("form");
+        if (form) {
+          form.insertBefore(filterContainer, form.firstChild);
+        }
+
+        filterInput.focus();
+
+        filterInput.addEventListener("input", (e) => {
+          const filterValue = e.target.value.toLowerCase();
+          const cards = document.querySelectorAll(".card");
+
+          cards.forEach((card) => {
+            const accountName = card
+              .querySelector(".saml-account-name")
+              .textContent.toLowerCase();
+            if (accountName.includes(filterValue)) {
+              card.classList.add("show");
+              card.classList.remove("hide");
+            } else {
+              card.classList.add("hide");
+              card.classList.remove("show");
+            }
+          });
+        });
+      }
+
       processAccounts();
-      focusFirstButton();
+      addAccountFilter();
       handleRoleButtonClicks();
     }
   );
