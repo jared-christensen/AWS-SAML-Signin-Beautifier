@@ -96,14 +96,37 @@
       // Moves favorite accounts to the top
       function moveFavoriteAccounts(account) {
         const accountNumber =
-          account.querySelector(".account-number").textContent;
+          account.querySelector(".account-number")?.textContent;
         const index = favoriteAccounts.indexOf(accountNumber);
+
         if (index !== -1) {
           account.classList.add("favorite-account");
-          account.style.order = index;
           account.style.gridColumn = "span 2";
-        } else {
-          account.style.order = favoriteAccounts.length;
+
+          const parent = account.parentElement;
+          const siblings = Array.from(parent.children);
+
+          // Find where to insert based on favoriteAccounts order
+          const insertBeforeIndex = siblings.findIndex((sibling) => {
+            const siblingNumber =
+              sibling.querySelector(".account-number")?.textContent;
+            const siblingIndex = favoriteAccounts.indexOf(siblingNumber);
+            return siblingIndex > index || siblingIndex === -1;
+          });
+
+          if (insertBeforeIndex === -1) {
+            parent.appendChild(account); // move to end
+          } else {
+            parent.insertBefore(account, siblings[insertBeforeIndex]);
+          }
+        }
+      }
+
+      // Focuses the first button
+      function focusFirstButton() {
+        const firstButton = document.querySelector("button[data-role-value]");
+        if (firstButton) {
+          firstButton.focus();
         }
       }
 
@@ -140,6 +163,7 @@
       }
 
       processAccounts();
+      focusFirstButton();
       handleRoleButtonClicks();
     }
   );

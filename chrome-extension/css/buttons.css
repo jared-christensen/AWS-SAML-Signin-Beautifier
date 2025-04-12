@@ -39,52 +39,52 @@
 }
 
 .btn {
-  display: block !important;
-  white-space: nowrap !important;
-  padding: 4px 20px !important;
-  border-radius: 20px !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-  line-height: 20px !important;
-  cursor: pointer !important;
-  text-decoration: none !important;
+  display: block;
+  white-space: nowrap;
+  padding: 4px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .secondary-btn {
-  border: 2px solid var(--btn-secondary-border-color) !important;
-  background-color: var(--btn-secondary-background-color) !important;
-  color: var(--btn-secondary-color) !important;
+  border: 2px solid var(--btn-secondary-border-color);
+  background-color: var(--btn-secondary-background-color);
+  color: var(--btn-secondary-color);
   &:hover {
-    border-color: var(--btn-secondary-hover-border-color) !important;
-    color: var(--btn-secondary-hover-color) !important;
-    background-color: var(--btn-secondary-hover-background-color) !important;
+    border-color: var(--btn-secondary-hover-border-color);
+    color: var(--btn-secondary-hover-color);
+    background-color: var(--btn-secondary-hover-background-color);
   }
   &:active {
-    border-color: var(--btn-secondary-active-border-color) !important;
-    color: var(--btn-secondary-active-color) !important;
-    background-color: var(--btn-secondary-active-background-color) !important;
+    border-color: var(--btn-secondary-active-border-color);
+    color: var(--btn-secondary-active-color);
+    background-color: var(--btn-secondary-active-background-color);
   }
   &:focus-visible {
-    outline: 2px solid var(--btn-secondary-border-color) !important;
-    outline-offset: 2px !important;
+    outline: 2px solid var(--btn-secondary-border-color);
+    outline-offset: 2px;
   }
 }
 
 .primary-btn {
-  border: 2px solid var(--btn-primary-background-color) !important;
-  background-color: var(--btn-primary-background-color) !important;
-  color: var(--btn-primary-color) !important;
+  border: 2px solid var(--btn-primary-background-color);
+  background-color: var(--btn-primary-background-color);
+  color: var(--btn-primary-color);
   &:hover,
   &:active {
-    border-color: var(--btn-primary-hover-background-color) !important;
-    background-color: var(--btn-primary-hover-background-color) !important;
+    border-color: var(--btn-primary-hover-background-color);
+    background-color: var(--btn-primary-hover-background-color);
   }
   &:active {
-    border-color: var(--btn-primary-active-background-color) !important;
-    background-color: var(--btn-primary-active-background-color) !important;
+    border-color: var(--btn-primary-active-background-color);
+    background-color: var(--btn-primary-active-background-color);
   }
   &:focus-visible {
-    outline: 2px solid var(--btn-primary-background-color) !important;
-    outline-offset: 2px !important;
+    outline: 2px solid var(--btn-primary-background-color);
+    outline-offset: 2px;
   }
 }
