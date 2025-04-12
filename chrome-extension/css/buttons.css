@@ -64,6 +64,10 @@
     color: var(--btn-secondary-active-color) !important;
     background-color: var(--btn-secondary-active-background-color) !important;
   }
+  &:focus-visible {
+    outline: 2px solid var(--btn-secondary-border-color) !important;
+    outline-offset: 2px !important;
+  }
 }
 
 .primary-btn {
@@ -78,5 +82,9 @@
   &:active {
     border-color: var(--btn-primary-active-background-color) !important;
     background-color: var(--btn-primary-active-background-color) !important;
+  }
+  &:focus-visible {
+    outline: 2px solid var(--btn-primary-background-color) !important;
+    outline-offset: 2px !important;
   }
 }

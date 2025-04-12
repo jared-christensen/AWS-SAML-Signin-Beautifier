@@ -62,17 +62,35 @@
 
       // Prettifies the buttons by removing any unwanted text and setting button prominence
       function prettifyButtons(account) {
-        account.querySelectorAll(".clickable-radio label").forEach((label) => {
-          let labelText = label.textContent.trim();
-          labelText = labelText.replace(removeFromButtonLabelRegEx, "");
-          label.textContent = labelText;
-          label.classList.add("btn");
-          if (items.primaryButtonRegEx && primaryButtonRegEx.test(labelText)) {
-            label.classList.add("primary-btn");
-          } else {
-            label.classList.add("secondary-btn");
-          }
-        });
+        account
+          .querySelectorAll(".saml-role.clickable-radio")
+          .forEach((container) => {
+            const radio = container.querySelector('input[type="radio"]');
+            const label = container.querySelector("label");
+
+            const roleValue = radio.value;
+
+            let labelText = label.textContent.trim();
+            labelText = labelText.replace(removeFromButtonLabelRegEx, "");
+
+            // Create button
+            const button = document.createElement("button");
+            button.type = "button";
+            button.textContent = labelText;
+            button.classList.add("btn");
+            button.dataset.roleValue = roleValue;
+
+            if (
+              items.primaryButtonRegEx &&
+              primaryButtonRegEx.test(labelText)
+            ) {
+              button.classList.add("primary-btn");
+            } else {
+              button.classList.add("secondary-btn");
+            }
+
+            container.replaceWith(button);
+          });
       }
 
       // Moves favorite accounts to the top
@@ -101,18 +119,28 @@
           });
       }
 
-      // Automatically submits the form when a role is clicked
-      function autoSubmit() {
+      // When you click a role button, this picks the role and submits the form
+      function handleRoleButtonClicks() {
         const form = document.querySelector("#saml_form");
-        document.querySelectorAll(".saml-role").forEach((role) => {
-          role.addEventListener("click", () => {
-            form.submit();
+
+        document
+          .querySelectorAll("button[data-role-value]")
+          .forEach((button) => {
+            function handleSubmit() {
+              const hiddenInput = document.createElement("input");
+              hiddenInput.type = "hidden";
+              hiddenInput.name = "roleIndex";
+              hiddenInput.value = button.dataset.roleValue;
+              form.appendChild(hiddenInput);
+              form.submit();
+            }
+
+            button.addEventListener("click", handleSubmit);
           });
-        });
       }
 
-      autoSubmit();
       processAccounts();
+      handleRoleButtonClicks();
     }
   );
 })();
